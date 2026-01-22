@@ -70,8 +70,8 @@ const InterviewsTab = () => {
                 const formData = new FormData();
                 formData.append('file', file);
                 const uploadRes = await uploadAPI.uploadFile(formData);
-                const fileUrl = uploadRes.data.url 
-                    ? `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}${uploadRes.data.url}` 
+                const fileUrl = uploadRes.data.url
+                    ? `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}${uploadRes.data.url}`
                     : URL.createObjectURL(file); // Fallback if upload response structure differs
 
                 // 2. Save metadata to DB
@@ -94,31 +94,31 @@ const InterviewsTab = () => {
     return (
         <div className="glass-card fade-in">
             <h2 style={{ marginBottom: '1.5rem', color: '#f59e0b' }}>Interview Prep Zone</h2>
-            
+
             {/* Sub-tabs Navigation */}
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', borderBottom: '1px solid #eee', paddingBottom: '0.5rem' }}>
-                <button 
+                <button
                     onClick={() => setSubTab('live')}
                     className={`btn btn-sm ${subTab === 'live' ? 'btn-primary' : 'btn-outline'}`}
                     style={subTab !== 'live' ? { background: 'transparent', color: '#666', border: '1px solid #ddd' } : {}}
                 >
                     Live Cam
                 </button>
-                <button 
+                <button
                     onClick={() => setSubTab('upload')}
                     className={`btn btn-sm ${subTab === 'upload' ? 'btn-primary' : 'btn-outline'}`}
                     style={subTab !== 'upload' ? { background: 'transparent', color: '#666', border: '1px solid #ddd' } : {}}
                 >
                     Upload Video
                 </button>
-                <button 
+                <button
                     onClick={() => setSubTab('references')}
                     className={`btn btn-sm ${subTab === 'references' ? 'btn-primary' : 'btn-outline'}`}
                     style={subTab !== 'references' ? { background: 'transparent', color: '#666', border: '1px solid #ddd' } : {}}
                 >
                     References
                 </button>
-                <button 
+                <button
                     onClick={() => setSubTab('tips')}
                     className={`btn btn-sm ${subTab === 'tips' ? 'btn-primary' : 'btn-outline'}`}
                     style={subTab !== 'tips' ? { background: 'transparent', color: '#666', border: '1px solid #ddd' } : {}}
@@ -133,7 +133,7 @@ const InterviewsTab = () => {
                     <div style={{ textAlign: 'center' }}>
                         <h3>Live Interview Practice</h3>
                         <p className="text-muted">Check your lighting and audio before the real deal.</p>
-                        
+
                         <div style={{ margin: '1rem auto', width: '100%', maxWidth: '640px', height: '360px', background: '#000', borderRadius: '8px', overflow: 'hidden', position: 'relative' }}>
                             <video ref={videoRef} autoPlay playsInline muted style={{ width: '100%', height: '100%', objectFit: 'cover' }}></video>
                             {!isStreamActive && (
@@ -157,9 +157,9 @@ const InterviewsTab = () => {
                     <div style={{ textAlign: 'center', padding: '2rem', border: '2px dashed #ddd', borderRadius: '8px' }}>
                         <h3>Upload Record</h3>
                         <p>Upload your mock interview recordings here.</p>
-                        <input 
-                            type="file" 
-                            accept="video/mp4,video/webm" 
+                        <input
+                            type="file"
+                            accept="video/mp4,video/webm"
                             onChange={handleFileUpload}
                             style={{ margin: '1rem 0' }}
                         />
