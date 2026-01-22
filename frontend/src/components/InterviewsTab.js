@@ -71,7 +71,7 @@ const InterviewsTab = () => {
                 formData.append('file', file);
                 const uploadRes = await uploadAPI.uploadFile(formData);
                 const fileUrl = uploadRes.data.url 
-                    ? `http://localhost:5000${uploadRes.data.url}` 
+                    ? `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}${uploadRes.data.url}` 
                     : URL.createObjectURL(file); // Fallback if upload response structure differs
 
                 // 2. Save metadata to DB
